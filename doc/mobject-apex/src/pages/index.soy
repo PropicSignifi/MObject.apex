@@ -1,0 +1,130 @@
+---
+title: "Home"
+description: "MObject.apex is a library to take care of persisting SObjects."
+---
+
+{namespace pageIndex}
+
+/**
+ */
+{template .render}
+	{@param site: ?}
+
+	{call main.render data="all"}
+		{param content kind="html"}
+			{call .header data="all" /}
+			{call .why /}
+			{call .features /}
+			{call .how /}
+			{call .highlights /}
+			{call Footer.render data="all" /}
+		{/param}
+	{/call}
+{/template}
+
+/**
+ */
+{template .header}
+	{@param site: ?}
+
+	<header class="header">
+		<div class="container">
+			<h1 class="header-title">{$site.title}</h1>
+			<h2 class="header-subtitle">{$site.index.description}</h2>
+			<div class="btn-group">
+				<a href="/mobject-apex/tutorials/getting_started/step_1.html" class="btn btn-accent btn-sm">Get Started</a>
+				<a href="https://github.com/Click-to-Cloud/MObject.apex/" class="btn btn-success btn-sm">GitHub</a>
+				<a href="/" onclick="location.assign('/')" class="btn btn-default btn-sm">Not Interested</a>
+			</div>
+		</div>
+	</header>
+{/template}
+
+/**
+ */
+{template .why}
+	<article class="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-2">
+					<h3 class="about-title">Why MObject.apex?</h3>
+					<p class="about-description">Usually when we do insertion/update/deletion on multiple SObjects that correlate each other, we need to sort out the DML operations and batch them. Sometimes this turns to be a pain point. MObject.apex is created to resolve this by taking care of the SObject persistence for you. It uses MObjects, the peer of SObjects, to track all the changes and flushes all the changes to DML operations in one run.</p>
+				</div>
+			</div>
+		</div>
+	</article>
+{/template}
+
+/**
+ */
+{template .features}
+	<div class="features">
+		<div class="container">
+			<div class="row">
+				<section class="feature col-md-4 col-md-offset-2">
+					<h3 class="feature-title">Managed Objects</h3>
+					<p class="feature-description">MObject.apex manages your SObjects and carries out DML operations in one call.</p>
+				</section>
+				<section class="feature col-md-4">
+					<h3 class="feature-title">Functional Chaining</h3>
+					<p class="feature-description">MObject.apex provides easy API so that you can chain your method calls.</p>
+				</section>
+				<section class="feature col-md-4">
+					<h3 class="feature-title">Namespace Hassle Free</h3>
+					<p class="feature-description">MObject.apex takes care of namespace issue of the SObjects for you.</p>
+				</section>
+			</div>
+		</div>
+	</div>
+{/template}
+
+/**
+ */
+{template .how}
+	<article class="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-2">
+					<h3 class="about-title">Easy API</h3>
+					<p class="about-description">MObject.apex has only a few APIs, but they are powerful.</p>
+				</div>
+			</div>
+		</div>
+	</article>
+{/template}
+
+/**
+ */
+{template .highlights}
+	<div class="highlights">
+		<div class="container">
+			<section class="highlight row">
+				<div class="col-md-6 col-md-offset-2">
+					<h4 class="highlight-title">Easy Persistence</h4>
+					<p class="highlight-description">MObject.apex tracks changes and flushes them in one call.</p>
+				</div>
+				<div class="col-md-5 col-md-offset-1">
+					<img class="highlight-image" src="/mobject-apex/images/highlight_1.png" alt="Easy Persistence" height="200">
+				</div>
+			</section>
+			<section class="highlight row">
+				<div class="col-md-6 col-md-push-9">
+					<h4 class="highlight-title">Method Chaining</h4>
+					<p class="highlight-description">MObject.apex offers chainable methods for you to use.</p>
+				</div>
+				<div class="col-md-5 col-md-offset-2 col-md-pull-6">
+					<img class="highlight-image" src="/mobject-apex/images/highlight_2.png" alt="Method Chaining" height="200">
+				</div>
+			</section>
+			<section class="highlight row">
+				<div class="col-md-6 col-md-offset-2">
+					<h4 class="highlight-title">Namespace Solved</h4>
+					<p class="highlight-description">MObject.apex helps you to solve the namespace issue.</p>
+				</div>
+				<div class="col-md-5 col-md-offset-1">
+					<img class="highlight-image" src="/mobject-apex/images/highlight_3.png" alt="Namespace Solved" height="200">
+				</div>
+			</section>
+		</div>
+	</div>
+{/template}
