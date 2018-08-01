@@ -46,7 +46,7 @@ String modifiedBy = (String)mo.get('LastModifiedBy.Name', 'Unknown');
 mo.put('Opportunities.0.Name', 'New op');
 ```
 
-MObjects maintain a pure object relation network, and therefore fields like 'Pricebook2Id' are not used in MObjects to refer to references, as you can already access it directly by 'Pricebook.Id'.
+MObjects maintain a pure object relation network, and therefore fields like 'Pricebook2Id' are discouraged in MObjects to refer to references, as you can already access it directly by 'Pricebook.Id'.
 
 Calls of `put(xxx)` will mark the MObject as dirty, and update operation will be carried out for the dirty MObjects during persistence.
 

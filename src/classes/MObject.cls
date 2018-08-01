@@ -91,6 +91,9 @@ public class MObject {
             if(this.info.containsField(key)) {
                 Schema.DescribeFieldResult field = this.info.findField(key);
                 if(field != null) {
+                    if(field.getType() == Schema.DisplayType.Boolean && value == null) {
+                        value = false;
+                    }
                     // Maps qualified field name to its value
                     this.fields.put(field.getName(), value);
                 }
@@ -965,6 +968,9 @@ public class MObject {
             this.references.put(name, references);
 
             this.qualifiedReferences.put(qualifiedName, reference);
+
+            // also track in fields
+            addField(reference);
         }
 
         // Add relationship

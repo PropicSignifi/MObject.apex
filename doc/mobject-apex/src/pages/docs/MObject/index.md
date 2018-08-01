@@ -59,8 +59,6 @@ are contained in managing the reference objects.
 MObject mop = MObject.create(new Opportunity());
 mop.put('Name', 'Opportunity');
 mop.put('Pricebook2', mpb);
-// Cannot do below
-mop.put('Pricebook2Id', mpb.get('Id'));
 ```
 
 </article>
