@@ -45,6 +45,8 @@
  * relationship is already available
  * */
 public class MObject {
+    private static Boolean isDebug = false;
+
     // The type info
     private TypeInfo info;
 
@@ -584,6 +586,12 @@ public class MObject {
             }
             sTypes.add(sType);
             sObjectTypes.put(name, sTypes);
+        }
+    }
+
+    private static void debug(String message) {
+        if(isDebug) {
+            System.debug(message);
         }
     }
 
@@ -1331,6 +1339,7 @@ public class MObject {
             for(MObject mo : mos) {
                 collectToBeDeleted(mo, toBeDeleted);
             }
+            debug('To be deleted: ' + toBeDeleted);
             Database.delete(toBeDeleted);
 
             // Insert
@@ -1339,6 +1348,8 @@ public class MObject {
                 for(MObject mo : mos) {
                     collectToBeInserted(mo, toBeInserted);
                 }
+
+                debug('To be inserted: ' + toBeInserted);
 
                 if(toBeInserted.isEmpty()) {
                     break;
@@ -1369,6 +1380,7 @@ public class MObject {
                     soList.add(so);
                 }
 
+                debug('Insert list: ' + soList);
                 insert soList;
 
                 for(Integer i = 0; i < toBeInserted.size(); i++) {
@@ -1386,6 +1398,7 @@ public class MObject {
                 collectToBeUpdated(mo, toBeUpdated);
             }
 
+            debug('To be updated: ' + toBeUpdated);
             List<SObject> soList = new List<SObject>();
             for(MObject mo : toBeUpdated) {
                 sObject so = mo.info.sType.newSObject();
@@ -1411,6 +1424,7 @@ public class MObject {
                 soList.add(so);
             }
 
+            debug('update list: ' + soList);
             update soList;
 
             for(MObject mo : toBeUpdated) {
